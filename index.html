@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Séminaire Jeet Kune Do — Abe Santos · Paris · 6-7 Juin 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+:root{
+  --bg:#07060A;--bg2:#0F0C10;--bg3:#161220;
+  --gold:#C9A84C;--gold2:#E2C87A;
+  --gold-dim:rgba(201,168,76,.1);--gold-border:rgba(201,168,76,.2);
+  --red:#C9524C;--red-dim:rgba(201,82,76,.12);--red-border:rgba(201,82,76,.25);
+  --cream:#F0EBE0;--cream2:#9B9288;--cream3:#504840;
+  --border:rgba(255,255,255,.05);--border2:rgba(201,168,76,.15);
+}
+body{background:var(--bg);color:var(--cream);font-family:'Inter',sans-serif;font-weight:300;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* NAV */
+nav{position:fixed;inset:0 0 auto;z-index:100;height:60px;padding:0 clamp(20px,5vw,64px);display:flex;align-items:center;justify-content:space-between;background:rgba(7,6,10,.9);backdrop-filter:blur(28px);border-bottom:1px solid var(--border)}
+.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:15px;letter-spacing:-.02em;color:var(--cream);display:flex;flex-direction:column;line-height:1.1}
+.logo span{font-size:10px;color:var(--gold);font-weight:500;letter-spacing:.08em;text-transform:uppercase}
+.nav-cta{padding:9px 20px;background:var(--gold);color:#000;font-size:13px;font-weight:500;border-radius:100px;text-decoration:none;transition:background .15s,transform .15s;min-height:44px;display:flex;align-items:center;gap:6px}
+.nav-cta:hover{background:var(--gold2);transform:translateY(-1px)}
+
+/* URGENCY BANNER */
+.urgency-banner{background:linear-gradient(90deg,rgba(201,82,76,.15),rgba(201,168,76,.1),rgba(201,82,76,.15));border-bottom:1px solid var(--red-border);padding:10px clamp(20px,5vw,64px);text-align:center;font-size:13px;color:var(--cream2)}
+.urgency-banner strong{color:var(--gold);font-weight:500}
+
+/* HERO */
+.hero{min-height:100vh;padding:120px clamp(20px,5vw,64px) 80px;display:flex;align-items:center;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.2;object-position:center 30%}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(110deg,rgba(7,6,10,.97) 45%,rgba(7,6,10,.65) 80%,rgba(7,6,10,.3) 100%)}
+.hero-inner{position:relative;z-index:1;max-width:1080px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr;gap:48px}}
+
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;margin-bottom:28px}
+.eyebrow-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);flex-shrink:0;animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
+.eyebrow-text{font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--gold);font-weight:500}
+.hero-h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(36px,5vw,64px);line-height:.97;letter-spacing:-.04em;color:var(--cream);margin-bottom:6px}
+.hero-serif{font-family:'Instrument Serif',serif;font-style:italic;display:block;color:var(--gold);font-size:clamp(40px,5.5vw,70px);line-height:.97;margin-bottom:28px}
+.hero-sub{font-size:clamp(15px,1.8vw,17px);color:var(--cream2);line-height:1.75;max-width:440px;margin-bottom:36px}
+.hero-sub strong{color:var(--cream);font-weight:400}
+
+/* Date/lieu badge */
+.event-meta{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:36px}
+.meta-badge{display:flex;align-items:center;gap:8px;padding:10px 16px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:10px;font-size:13px;color:var(--cream2)}
+.meta-badge svg{width:14px;height:14px;color:var(--gold);flex-shrink:0}
+.meta-badge strong{color:var(--cream);font-weight:500}
+
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px}
+.btn-gold{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;background:var(--gold);color:#000;font-size:15px;font-weight:500;border-radius:100px;text-decoration:none;transition:background .15s,transform .2s,box-shadow .2s;min-height:52px;box-shadow:0 4px 24px rgba(201,168,76,.25)}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 12px 40px rgba(201,168,76,.35)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:15px 24px;border:1px solid rgba(255,255,255,.12);color:var(--cream2);font-size:14px;border-radius:100px;text-decoration:none;transition:border-color .15s,color .15s;min-height:52px}
+.btn-ghost:hover{border-color:var(--gold-border);color:var(--cream)}
+
+/* Prix card */
+.price-card{background:rgba(22,18,32,.9);border:1px solid var(--border2);border-radius:20px;padding:28px;backdrop-filter:blur(20px)}
+.price-early{display:flex;justify-content:space-between;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--border)}
+.price-label{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--cream3);margin-bottom:4px;font-weight:500}
+.price-amount{font-family:'Syne',sans-serif;font-weight:800;font-size:40px;color:var(--gold);letter-spacing:-.04em;line-height:1}
+.price-deadline{font-size:12px;color:var(--red);font-weight:500;margin-top:4px;display:flex;align-items:center;gap:4px}
+.price-deadline svg{width:12px;height:12px}
+.price-normal{display:flex;justify-content:space-between;align-items:center;padding:16px 0}
+.price-normal .price-amount{font-size:28px;color:var(--cream2)}
+.price-card-cta{display:flex;gap:8px;margin-top:20px}
+.price-cta-early{flex:1;padding:13px;background:var(--gold);color:#000;font-size:13px;font-weight:500;border-radius:100px;text-align:center;text-decoration:none;transition:background .15s}
+.price-cta-early:hover{background:var(--gold2)}
+.price-cta-normal{flex:1;padding:13px;border:1px solid var(--border2);color:var(--cream2);font-size:13px;border-radius:100px;text-align:center;text-decoration:none;transition:border-color .15s,color .15s}
+.price-cta-normal:hover{border-color:var(--gold);color:var(--cream)}
+
+/* SECTIONS */
+.section{padding:88px clamp(20px,5vw,64px)}
+.container{max-width:1080px;margin:0 auto}
+.eyebrow-sm{font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--gold);font-weight:600;margin-bottom:14px}
+.h2{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(28px,4vw,48px);line-height:1.05;letter-spacing:-.03em;color:var(--cream);margin-bottom:14px}
+.h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--gold)}
+.lead{font-size:clamp(15px,1.8vw,17px);color:var(--cream2);line-height:1.75;max-width:560px}
+
+/* ABOUT ABE */
+.about-abe{background:var(--bg2)}
+.about-inner{display:grid;grid-template-columns:1fr 1.3fr;gap:72px;align-items:center;margin-top:48px}
+@media(max-width:768px){.about-inner{grid-template-columns:1fr;gap:36px}}
+.abe-img-wrap{position:relative}
+.abe-img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:20px;filter:grayscale(15%)}
+.abe-badge{position:absolute;bottom:20px;left:20px;right:20px;background:rgba(7,6,10,.92);border:1px solid var(--gold-border);border-radius:12px;padding:14px 18px;backdrop-filter:blur(20px)}
+.abe-badge-title{font-family:'Syne',sans-serif;font-weight:700;font-size:14px;color:var(--cream);margin-bottom:4px}
+.abe-badge-sub{font-size:12px;color:var(--cream2)}
+.abe-text .h2{margin-bottom:20px}
+.abe-text p{color:var(--cream2);font-size:15px;line-height:1.85;margin-bottom:16px}
+.abe-text p strong{color:var(--cream);font-weight:400}
+.credentials{display:flex;flex-direction:column;gap:12px;margin-top:24px}
+.cred-item{display:flex;gap:12px;align-items:flex-start}
+.cred-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:7px}
+.cred-text{font-size:14px;color:var(--cream2);line-height:1.5}
+.cred-text strong{color:var(--cream);font-weight:400}
+
+/* PROGRAMME */
+.programme{background:var(--bg)}
+.prog-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px}
+@media(max-width:640px){.prog-grid{grid-template-columns:1fr}}
+.prog-day{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:36px 28px;transition:border-color .2s}
+.prog-day:hover{border-color:var(--border2)}
+.prog-day-header{display:flex;align-items:center;gap:14px;margin-bottom:24px}
+.prog-day-num{font-family:'Syne',sans-serif;font-weight:800;font-size:52px;color:rgba(201,168,76,.1);letter-spacing:-.05em;line-height:1}
+.prog-day-info{}
+.prog-day-date{font-size:13px;color:var(--gold);font-weight:500;text-transform:uppercase;letter-spacing:.08em}
+.prog-day-title{font-family:'Syne',sans-serif;font-weight:700;font-size:18px;color:var(--cream);letter-spacing:-.02em;margin-top:2px}
+.prog-items{display:flex;flex-direction:column;gap:12px}
+.prog-item{display:flex;gap:12px;align-items:flex-start}
+.prog-item-time{font-size:12px;color:var(--gold);font-weight:500;min-width:48px;margin-top:2px;opacity:.8}
+.prog-item-text{font-size:14px;color:var(--cream2);line-height:1.5}
+.prog-item-text strong{display:block;color:var(--cream);font-weight:500;margin-bottom:2px}
+
+/* PUBLIC */
+.public-section{background:var(--bg2)}
+.public-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px}
+@media(max-width:640px){.public-grid{grid-template-columns:1fr}}
+.public-card{background:var(--bg3);padding:32px 24px;transition:background .2s}
+.public-card:first-child{border-radius:16px 0 0 16px}
+.public-card:last-child{border-radius:0 16px 16px 0}
+@media(max-width:640px){.public-card,.public-card:first-child,.public-card:last-child{border-radius:16px}}
+.public-card:hover{background:rgba(201,168,76,.04)}
+.public-icon{width:40px;height:40px;background:var(--gold-dim);border:1px solid var(--gold-border);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.public-icon svg{width:18px;height:18px;color:var(--gold)}
+.public-card h3{font-family:'Syne',sans-serif;font-weight:700;font-size:16px;color:var(--cream);letter-spacing:-.01em;margin-bottom:8px}
+.public-card p{font-size:13px;color:var(--cream2);line-height:1.65}
+
+/* FORM SECTION */
+.form-section{background:var(--bg)}
+.form-inner{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;margin-top:48px}
+@media(max-width:768px){.form-inner{grid-template-columns:1fr;gap:40px}}
+.form-left .lead{margin-bottom:32px}
+.price-summary{background:var(--bg2);border:1px solid var(--border2);border-radius:16px;padding:24px}
+.price-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)}
+.price-row:last-child{border-bottom:none}
+.price-row-label{font-size:13px;color:var(--cream2)}
+.price-row-val{font-family:'Syne',sans-serif;font-weight:700;font-size:16px;color:var(--cream)}
+.price-row-val.featured{color:var(--gold)}
+.price-row-badge{font-size:10px;text-transform:uppercase;letter-spacing:.06em;padding:3px 8px;background:var(--red-dim);border:1px solid var(--red-border);border-radius:6px;color:var(--red);font-weight:600}
+
+/* Form */
+.contact-form{display:flex;flex-direction:column;gap:16px}
+.form-field{display:flex;flex-direction:column;gap:6px}
+.form-field label{font-size:12px;color:var(--cream2);text-transform:uppercase;letter-spacing:.08em;font-weight:500}
+.form-field input,.form-field textarea,.form-field select{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:10px;padding:13px 16px;font-size:14px;color:var(--cream);font-family:'Inter',sans-serif;font-weight:300;transition:border-color .15s;outline:none;width:100%}
+.form-field input:focus,.form-field textarea:focus,.form-field select:focus{border-color:var(--gold-border)}
+.form-field textarea{height:100px;resize:none}
+.form-field select option{background:#0F0C10;color:var(--cream)}
+.form-submit{padding:15px 30px;background:var(--gold);color:#000;font-size:15px;font-weight:500;border-radius:100px;border:none;cursor:pointer;width:100%;transition:background .15s,transform .15s;min-height:52px;font-family:'Inter',sans-serif}
+.form-submit:hover{background:var(--gold2);transform:translateY(-1px)}
+.form-note{font-size:12px;color:var(--cream3);text-align:center;margin-top:4px}
+
+/* FOOTER */
+footer{padding:28px clamp(20px,5vw,64px);border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.footer-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:14px;color:var(--cream2);letter-spacing:-.02em}
+.footer-logo em{font-style:normal;color:var(--gold)}
+.footer-copy{font-size:12px;color:var(--cream3)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:none}
+.d1{transition-delay:.07s}.d2{transition-delay:.14s}.d3{transition-delay:.21s}
+@media(prefers-reduced-motion:reduce){*{transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+@media(max-width:480px){.hero-actions{flex-direction:column}.btn-gold,.btn-ghost{width:100%;justify-content:center}.event-meta{flex-direction:column;gap:8px}}
+</style>
+</head>
+<body>
+
+<!-- URGENCY -->
+<div class="urgency-banner" role="alert">
+  <strong>Tarif early bird : 150€</strong> jusqu'au 31 mars 2026 · Ensuite 210€ · <strong>Il reste 7 jours.</strong>
+</div>
+
+<!-- NAV -->
+<nav aria-label="Navigation">
+  <div class="logo">
+    Cercle Parisien JKD
+    <span>Jeet Kune Do</span>
+  </div>
+  <a href="#inscription" class="nav-cta">
+    <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    S'inscrire
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" aria-labelledby="hero-h1">
+  <div class="hero-bg" aria-hidden="true">
+    <img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?w=1920&q=80&auto=format&fit=crop" alt="">
+  </div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">
+        <span class="eyebrow-dot" aria-hidden="true"></span>
+        <span class="eyebrow-text">Séminaire exclusif · Paris 2026</span>
+      </div>
+      <h1>
+        <span class="hero-h1" id="hero-h1">Séminaire</span>
+        <em class="hero-serif">Jeet Kune Do</em>
+      </h1>
+      <p class="hero-sub">Deux jours d'entraînement intensif avec <strong>Abe Santos</strong> — l'un des instructeurs certifiés les plus respectés dans la lignée directe de Bruce Lee.</p>
+      <div class="event-meta">
+        <div class="meta-badge">
+          <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          <div><strong>6 & 7 Juin 2026</strong></div>
+        </div>
+        <div class="meta-badge">
+          <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div><strong>Paris, France</strong></div>
+        </div>
+      </div>
+      <div class="hero-actions">
+        <a href="#inscription" class="btn-gold">
+          Réserver ma place
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#programme" class="btn-ghost">Voir le programme</a>
+      </div>
+    </div>
+
+    <!-- Prix card -->
+    <div class="price-card" aria-label="Tarifs du séminaire">
+      <div class="price-early">
+        <div>
+          <div class="price-label">Early Bird</div>
+          <div class="price-amount">150€</div>
+          <div class="price-deadline">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            Jusqu'au 31 mars 2026
+          </div>
+        </div>
+        <span style="padding:4px 12px;background:var(--red-dim);border:1px solid var(--red-border);border-radius:6px;font-size:11px;color:var(--red);font-weight:600;text-transform:uppercase;letter-spacing:.05em">7 jours</span>
+      </div>
+      <div class="price-normal">
+        <div>
+          <div class="price-label">Tarif standard</div>
+          <div class="price-amount">210€</div>
+        </div>
+        <span style="font-size:12px;color:var(--cream3)">À partir du 1er avril</span>
+      </div>
+      <div class="price-card-cta">
+        <a href="#inscription" class="price-cta-early">Tarif early bird</a>
+        <a href="#inscription" class="price-cta-normal">Tarif standard</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT ABE -->
+<section class="about-abe section reveal" aria-labelledby="abe-h">
+  <div class="container">
+    <p class="eyebrow-sm">L'instructeur</p>
+    <h2 class="h2" id="abe-h">Abe Santos<br><em>Lignée directe Bruce Lee</em></h2>
+    <div class="about-inner">
+      <div class="abe-img-wrap reveal">
+        <img class="abe-img" src="https://images.unsplash.com/photo-1606902965551-dce093cda6e7?w=800&q=80&auto=format&fit=crop" alt="Instructeur arts martiaux">
+        <div class="abe-badge">
+          <div class="abe-badge-title">Abe Santos</div>
+          <div class="abe-badge-sub">Instructeur certifié JKD · Lignée Dan Inosanto</div>
+        </div>
+      </div>
+      <div class="abe-text reveal d1">
+        <p>Abe Santos est l'un des rares instructeurs certifiés dans la lignée directe de Bruce Lee, à travers Dan Inosanto. Il forme des pratiquants et instructeurs sur les cinq continents depuis plus de deux décennies.</p>
+        <p><strong>Ce séminaire Paris est une opportunité rare.</strong> Ses passages en Europe sont espacés. Deux jours complets pour travailler les fondamentaux et les concepts avancés du Jeet Kune Do en petit groupe.</p>
+        <div class="credentials">
+          <div class="cred-item">
+            <span class="cred-dot" aria-hidden="true"></span>
+            <span class="cred-text"><strong>Certifié Dan Inosanto</strong> — lignée directe Bruce Lee / Jeet Kune Do Concepts</span>
+          </div>
+          <div class="cred-item">
+            <span class="cred-dot" aria-hidden="true"></span>
+            <span class="cred-text"><strong>Filipino Martial Arts</strong> — Kali, Escrima, Arnis</span>
+          </div>
+          <div class="cred-item">
+            <span class="cred-dot" aria-hidden="true"></span>
+            <span class="cred-text"><strong>+20 ans</strong> d'enseignement international</span>
+          </div>
+          <div class="cred-item">
+            <span class="cred-dot" aria-hidden="true"></span>
+            <span class="cred-text"><strong>Seminar tour</strong> régulier en Europe, Asie, Amériques</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMME -->
+<section class="programme section reveal" id="programme" aria-labelledby="prog-h">
+  <div class="container">
+    <p class="eyebrow-sm">Programme</p>
+    <h2 class="h2" id="prog-h">Deux jours.<br><em>Un niveau au-dessus.</em></h2>
+    <p class="lead">Chaque session est conçue pour progresser sur les fondamentaux et explorer les applications avancées du JKD.</p>
+    <div class="prog-grid">
+      <div class="prog-day reveal d1">
+        <div class="prog-day-header">
+          <div class="prog-day-num" aria-hidden="true">J1</div>
+          <div class="prog-day-info">
+            <div class="prog-day-date">Samedi 6 Juin</div>
+            <div class="prog-day-title">Fondations JKD</div>
+          </div>
+        </div>
+        <div class="prog-items">
+          <div class="prog-item">
+            <span class="prog-item-time">09h00</span>
+            <div class="prog-item-text"><strong>Accueil & Introduction</strong>Présentation, warm-up, philosophie JKD</div>
+          </div>
+          <div class="prog-item">
+            <span class="prog-item-time">10h00</span>
+            <div class="prog-item-text"><strong>Postures & Footwork</strong>Guardas, déplacements, distance management</div>
+          </div>
+          <div class="prog-item">
+            <span class="prog-item-time">12h00</span>
+            <div class="prog-item-text">Pause déjeuner</div>
+          </div>
+          <div class="prog-item">
+            <span class="prog-item-time">14h00</span>
+            <div class="prog-item-text"><strong>Frappes & Combinaisons</strong>Straight blast, cross, hook — timing & vitesse</div>
+          </div>
+          <div class="prog-item">
+            <span class="prog-item-time">16h00</span>
+            <div class="prog-item-text"><strong>Application & Sparring</strong>Mise en pratique guidée</div>
+          </div>
+          <div class="prog-item">
+            <span class="prog-item-time">17h30</span>
+            <div class="prog-item-text">Debriefing & Q&A</div>
+          </div>
+        </div>
+      </div>
+      <div class="prog-day reveal d2">
+        <div class="prog-day-header">
+          <div class="prog-day-num" aria-hidden="true">J2</div>
+          <div class="prog-day-info">
+            <div class="prog-day-date">Dimanche 7 Juin</div>
+            <div class="prog-day-title">Concepts Avancés</div>
+          </div>
+        </div>
+        <div class="prog-items">
+          <div class="prog-item">
+            <span class="prog-item-time">09h00</span>
+            <div class="prog-item-text"><strong>Révision & Warm-up</strong>Consolidation du Jour 1</div>
+          </div>
+          <div class="prog-item">
+            <span class="prog-item-time">10h00</span>
+            <div class="prog-item-text"><strong>Filipino Martial Arts</strong>Introduction Kali / Escrima</div>
+          </div>
+          <div class="prog-item">
+            <span class="prog-item-time">12h00</span>
+            <div class="prog-item-text">Pause déjeuner</div>
+          </div>
+          <div class="prog-item">
+            <span class="prog-item-time">14h00</span>
+            <div class="prog-item-text"><strong>Trapping & Grappling</strong>Transitions, clinch, ground & pound</div>
+          </div>
+          <div class="prog-item">
+            <span class="prog-item-time">16h00</span>
+            <div class="prog-item-text"><strong>Libre & Integration</strong>Scénarios, libre échange avec Abe</div>
+          </div>
+          <div class="prog-item">
+            <span class="prog-item-time">17h30</span>
+            <div class="prog-item-text"><strong>Clôture & Remise certificats</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POUR QUI -->
+<section class="public-section section reveal" aria-labelledby="public-h">
+  <div class="container">
+    <p class="eyebrow-sm">Pour qui</p>
+    <h2 class="h2" id="public-h">Ce séminaire est fait<br><em>pour vous si...</em></h2>
+    <div class="public-grid">
+      <div class="public-card reveal d1">
+        <div class="public-icon" aria-hidden="true">
+          <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <h3>Pratiquants JKD</h3>
+        <p>Tous niveaux bienvenus. Ce séminaire est conçu pour approfondir votre pratique avec l'un des meilleurs instructeurs au monde.</p>
+      </div>
+      <div class="public-card reveal d2">
+        <div class="public-icon" aria-hidden="true">
+          <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>Instructeurs & Coaches</h3>
+        <p>Montez en compétences pour mieux transmettre. Un certificat de participation est remis à l'issue du séminaire.</p>
+      </div>
+      <div class="public-card reveal d3">
+        <div class="public-icon" aria-hidden="true">
+          <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <h3>Autres arts martiaux</h3>
+        <p>Boxe, MMA, Kung Fu, Karaté — le JKD de Bruce Lee enrichit toutes les pratiques. Aucun prérequis de style.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSCRIPTION -->
+<section class="form-section section reveal" id="inscription" aria-labelledby="form-h">
+  <div class="container">
+    <p class="eyebrow-sm">Inscription</p>
+    <h2 class="h2" id="form-h">Réservez votre place.<br><em>Les places sont limitées.</em></h2>
+    <div class="form-inner">
+      <div class="form-left">
+        <p class="lead">Petit groupe garanti pour maximiser le temps avec Abe. Pas de séminaire à 100 personnes — une expérience en profondeur.</p>
+        <div class="price-summary" style="margin-top:32px" aria-label="Résumé des tarifs">
+          <div class="price-row">
+            <div>
+              <div class="price-row-label">Early Bird</div>
+              <div style="font-size:11px;color:var(--cream3);margin-top:2px">Jusqu'au 31 mars 2026</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px">
+              <span class="price-row-badge">7 jours</span>
+              <span class="price-row-val featured">150€</span>
+            </div>
+          </div>
+          <div class="price-row">
+            <div>
+              <div class="price-row-label">Tarif standard</div>
+              <div style="font-size:11px;color:var(--cream3);margin-top:2px">À partir du 1er avril</div>
+            </div>
+            <span class="price-row-val">210€</span>
+          </div>
+          <div class="price-row" style="border-bottom:none">
+            <div class="price-row-label">Certificat inclus</div>
+            <span style="font-size:12px;color:var(--gold)">✓ Remis J2</span>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form" aria-label="Formulaire d'inscription" action="mailto:contact@cercle-parisien.com" method="post" enctype="text/plain">
+        <div class="form-field">
+          <label for="name">Nom complet *</label>
+          <input type="text" id="name" name="nom" required placeholder="Votre nom et prénom" autocomplete="name">
+        </div>
+        <div class="form-field">
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" required placeholder="votre@email.com" autocomplete="email">
+        </div>
+        <div class="form-field">
+          <label for="phone">Téléphone</label>
+          <input type="tel" id="phone" name="telephone" placeholder="+33 6 ..." autocomplete="tel">
+        </div>
+        <div class="form-field">
+          <label for="tarif">Tarif souhaité *</label>
+          <select id="tarif" name="tarif" required>
+            <option value="">Choisir...</option>
+            <option value="early">Early Bird — 150€ (avant 31 mars)</option>
+            <option value="standard">Tarif standard — 210€</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="niveau">Niveau / expérience</label>
+          <textarea id="niveau" name="niveau" placeholder="Votre pratique actuelle, style, années d'expérience..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Envoyer ma demande d'inscription</button>
+        <p class="form-note">Vous recevrez une confirmation sous 24h avec les modalités de paiement.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-logo">Cercle <em>Parisien</em> JKD</span>
+  <p class="footer-copy">© 2026 · Séminaire Abe Santos · <a href="https://cercle-parisien.com">cercle-parisien.com</a></p>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target)}})},{threshold:.1,rootMargin:'0px 0px -32px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
